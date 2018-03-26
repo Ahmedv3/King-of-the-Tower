@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour {
     public LayerMask whatIsGround;
 
     private bool grounded;
+    private Animator anim;
 
     void FixedUpdate(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
@@ -25,7 +26,8 @@ public class Hero : MonoBehaviour {
     // Use this for initializatio
     void Start () {
 
-        
+       
+        anim = GetComponent<Animator>();
 		
 	}
 
@@ -37,15 +39,17 @@ public class Hero : MonoBehaviour {
             Jump();
             
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
+        if (Input.GetKey(KeyCode.RightArrow)){
             GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (Input.GetKey(KeyCode.LeftArrow)){
             GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+
 
     }
 }
