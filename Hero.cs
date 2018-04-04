@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour {
 
+
     public float moveSpeed;
     public float jummpHeight;
 
@@ -14,6 +15,8 @@ public class Hero : MonoBehaviour {
     private bool grounded;
     private Animator anim;
 
+
+
     void FixedUpdate(){
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
@@ -22,17 +25,11 @@ public class Hero : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, jummpHeight);
     }
 
-
-    // Use this for initializatio
-    void Start () {
-
-       
+    void Start () {  
         anim = GetComponent<Animator>();
-		
-	}
 
+    }
 
-    // Update is called once per frame
     void Update () {
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
@@ -51,5 +48,10 @@ public class Hero : MonoBehaviour {
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
 
+
+
     }
+
+   
+
 }

@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class movingPlatform : MonoBehaviour {
 
-    public Transform pos1, pos2;
-    public float platformSpeed;
-    public Transform startPos;
+    //public GameObject player;
 
+    public Transform pos1, pos2,startPos;
+    public float platformSpeed;
     Vector3 nextPos;
+
+  /*  void isCollision(GameObject player) 
+    {
+        if (player.transform.position.y >= 9.30)
+        {
+            player.transform.parent = transform;
+        }
+        else if(player.transform.position.y < 9.30 || player.transform.position.y > 9.45)
+        {
+            player.transform.parent = null;
+        }
+    } */
 
     // Use this for initialization
     void Start () {
@@ -17,6 +29,7 @@ public class movingPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if(transform.position == pos1.position)
         {
             nextPos = pos2.position;
@@ -26,5 +39,8 @@ public class movingPlatform : MonoBehaviour {
             nextPos = pos1.position;
         }
         transform.position = Vector3.MoveTowards(transform.position, nextPos, platformSpeed);
+
+      //  isCollision(player);
 	}
+
 }
