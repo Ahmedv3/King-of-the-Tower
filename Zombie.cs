@@ -6,18 +6,25 @@ public class Zombie : MonoBehaviour {
 
 
     public int currentHealt = 100;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private Animator anim;
+
+
+
+    void Start () {
+        anim = GetComponent<Animator>();
+    }
 	
-	// Update is called once per frame
 	void Update () {
-        if(currentHealt <= 0){
+        
+
+        if (currentHealt <= 0)
+        {
             Destroy(gameObject);
         }
-		
-	}
+
+        anim.SetFloat("speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+
+    }
 
     public void Damage(int damage){
         currentHealt -= damage;

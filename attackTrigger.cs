@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class attackTrigger : MonoBehaviour {
 
-    public int dmg = 20;
+    public int dmg = 100;
 
     void OnTriggerEnter2D(Collider2D coll){
         if(coll.isTrigger == true && coll.CompareTag("Enemy")){
