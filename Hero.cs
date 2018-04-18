@@ -7,7 +7,7 @@ public class Hero : MonoBehaviour {
 
     public float moveSpeed;
     public float jummpHeight;
-    public int maxHealth = 100;
+    public int maxHealth = 5;
     public int currentHealth;
  
 
