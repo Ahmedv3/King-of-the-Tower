@@ -18,6 +18,8 @@ public class HUD : MonoBehaviour {
     void Update(){
 
         HeartsUI.sprite = heartsSprites[player.currentHealth];
+        HeartsUI.transform.position = player.transform.position + new Vector3(-5.0f,5.3f,0.0f);
+
         
     }
 
