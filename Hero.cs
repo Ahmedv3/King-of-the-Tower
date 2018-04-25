@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Hero : MonoBehaviour {
 
+    private bool damageTaken = false;
+    private float damageTimer = 0;
+    private float damageCd = 0.3f;
 
     public float moveSpeed;
     public float jummpHeight;
@@ -17,9 +21,15 @@ public class Hero : MonoBehaviour {
 
     private bool grounded;
     private Animator anim;
+    private Animator anim2;
 
     void Die(){
-        Destroy(gameObject);
+        restartCurrentScene();
+    }
+
+    public void restartCurrentScene(){
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
 
@@ -33,8 +43,15 @@ public class Hero : MonoBehaviour {
 
     void Start () {  
         anim = GetComponent<Animator>();
+        anim2 = GetComponent<Animator>();
         currentHealth = maxHealth;
+        damageTimer = damageCd;
+    }
 
+    public void Damage(int damage){
+        currentHealth -= damage;
+        damageTaken = true;
+        
     }
 
     void Update () {
@@ -55,8 +72,19 @@ public class Hero : MonoBehaviour {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
 
-        
+        if (damageTaken){
+            if (damageTimer > 0){
+                damageTimer -= Time.deltaTime;
+            }
+            else{
+                damageTaken = false;
+                damageTimer = damageCd;
+            }
+
+        }
+
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+        anim2.SetBool("damageTaken", damageTaken);
     }
 
    

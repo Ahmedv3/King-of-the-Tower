@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour {
 
-
-    public int currentHealt = 100;
+    public int currentHealth = 100;
     private Animator anim;
+    
 
 
 
@@ -17,7 +17,7 @@ public class Zombie : MonoBehaviour {
 	void Update () {
         
 
-        if (currentHealt <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -27,7 +27,6 @@ public class Zombie : MonoBehaviour {
     }
 
     public void Damage(int damage){
-        currentHealt -= damage;
-        
+        currentHealth -= damage;        
     }
 }
