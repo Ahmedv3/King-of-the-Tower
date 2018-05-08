@@ -12,8 +12,10 @@ public class Hero : MonoBehaviour {
     public float moveSpeed;
     public float jummpHeight;
     public int maxHealth = 5;
+    public int maxGems = 9;
     public int currentHealth;
- 
+    public int currentGems;
+
 
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -45,6 +47,9 @@ public class Hero : MonoBehaviour {
         anim = GetComponent<Animator>();
         anim2 = GetComponent<Animator>();
         currentHealth = maxHealth;
+
+        currentGems = 0;
+
         damageTimer = damageCd;
     }
 
@@ -53,6 +58,13 @@ public class Hero : MonoBehaviour {
         damageTaken = true;
         
     }
+
+    public void gem1Up(int gemUP)
+    {
+        currentGems += gemUP;
+
+    }
+
 
     void Update () {
 

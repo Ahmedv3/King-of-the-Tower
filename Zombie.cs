@@ -6,9 +6,6 @@ public class Zombie : MonoBehaviour {
 
     public int currentHealth = 100;
     private Animator anim;
-    
-
-
 
     void Start () {
         anim = GetComponent<Animator>();

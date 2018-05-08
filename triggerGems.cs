@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class triggerGems : MonoBehaviour {
 
-    void OnTriggerEnter2D(Collider2D other)
+    public int Up = 0;
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(other.transform.tag == "Player")
+        if (col.isTrigger == true && col.CompareTag("Player"))
         {
+            col.SendMessageUpwards("gem1Up", Up);
             Destroy(this.gameObject);
         }
     }
