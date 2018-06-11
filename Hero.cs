@@ -26,7 +26,8 @@ public class Hero : MonoBehaviour {
     private Animator anim2;
 
     void Die(){
-        restartCurrentScene();
+        
+        //restartCurrentScene();
     }
 
     public void restartCurrentScene(){
